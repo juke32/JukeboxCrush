@@ -2,11 +2,11 @@
 ;version 4
 ;type process
 ;preview linear
-;name "Brutal Bitcrusher"
+;name "JukeboxCrush"
 ;author "Juke32"
 ;release "2026-02-26"
 ;copyright "GPL v2 or later"
-;about "Brutal Bitcrusher - A highly choppy, lo-fi bitcrusher effect.\nApplies direct bit depth reduction and downsample-and-hold rate reduction."
+;about "JukeboxCrush - A highly choppy, lo-fi bitcrusher effect.\nApplies direct bit depth reduction and downsample-and-hold rate reduction."
 
 ;; ---- CONTROLS -------------------------------------------------------
 ;control bitDepth "Bit Depth" int "bits" 8 1 16
@@ -26,12 +26,19 @@
 
 ;; ---- SAMPLE AND HOLD -------------------------------------------------
 ;; Downsample by taking every Nth sample, and hold it for N samples
-;; Uses snd-avg (which can take a step size) and snd-resample for the hold effect
+;; We use snd-avg for stepping, and snd-compose for holding steps.
 (defun sample-and-hold (sig factor)
   (if (<= factor 1)
       sig
-      (let* ((downsampled (snd-avg sig factor factor op-average))) ; decimate
-        (snd-resamplev downsampled *sound-srate* (snd-const 1 0 *sound-srate* (get-duration 1)))))) ; hold via nearest-neighbor resample
+      (let* ((f (float factor))
+             (step-rate (/ *sound-srate* f))
+             ;; downsampled acts as the steps (1 sample every 'factor')
+             (downsampled (snd-avg sig factor factor op-average)))
+        ;; Resample back up to hold the values using a staircase control signal
+        (control-srate-abs *sound-srate*
+          (snd-compose downsampled
+            (mult (/ 1.0 step-rate)
+                  (quantize (pwl f len f) 1)))))))
 
 ;; ---- MAIN PROCESSING -------------------------------------------------
 (defun process-channel (sig)
