@@ -53,14 +53,6 @@ def is_writable(path):
     return os.access(parent, os.W_OK)
 
 
-def ensure_dir(path, use_sudo):
-    if os.path.isdir(path):
-        return True
-    if use_sudo:
-        r = subprocess.run(["sudo", "mkdir", "-p", path], capture_output=True, text=True)
-        return r.returncode == 0
-    os.makedirs(path, exist_ok=True)
-    return True
 
 
 def create_symlink(src, dest_file, use_sudo):
@@ -118,8 +110,8 @@ def main():
         need_sudo = OS != "Windows" and not is_writable(target_dir)
 
         print(f"  Trying: {target_dir}")
-        if not ensure_dir(target_dir, use_sudo=need_sudo):
-            print(f"  ✗ Could not create directory, skipping.\n")
+        if not os.path.isdir(target_dir):
+            print(f"  ✗ Directory does not exist, skipping.\n")
             continue
 
         if create_symlink(SRC, dest_file, use_sudo=need_sudo):
