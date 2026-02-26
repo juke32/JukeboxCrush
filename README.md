@@ -26,7 +26,7 @@ Audacity has a built-in installer for Nyquist (`.ny`) files:
 2. Restart audacity
 3. Look under Effects
 
-## If it doesn't show up 
+### If it doesn't show up 
 4. Open Audacity → **Effect menu** → **Plugin Manager** (or **Add / Remove Plug-ins…**)
 5. Find **JukeboxCrush** in the list, set it to **Enabled**, click **OK**
 6. It will now appear under **Effect → JukeboxCrush** (or restart again)
