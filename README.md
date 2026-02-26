@@ -4,23 +4,7 @@ A Nyquist bitcrush plugin for Audacity featuring bit depth reduction, sample rat
 
 <img width="495" height="263" alt="image" src="https://github.com/user-attachments/assets/1bd06708-ad4d-4799-8e97-1499d1bf9caf" />
 
-## Manual Installation
-1. Copy it to your Audacity plug-ins folder 
-   | OS | Path |
-   |----|------|
-   | **Windows** | `C:\Program Files\Audacity\Plug-Ins\` |
-   | **macOS** | `/Applications/Audacity.app/Contents/plug-ins/` |
-   | **Linux** | `/usr/share/audacity/plug-ins/` or `~/.audacity-data/Plug-Ins/` |
-2. Restart audacity
-3. Look under Effects
-
-## If it doesn't show up 
-4. Open Audacity → **Effect menu** → **Plugin Manager** (or **Add / Remove Plug-ins…**)
-5. Find **JukeboxCrush** in the list, set it to **Enabled**, click **OK**
-6. It will now appear under **Effect → JukeboxCrush** (or restart again)
-
 ## Nyquist Plugin Installer
-
 Audacity has a built-in installer for Nyquist (`.ny`) files:
 
 1. Open Audacity
@@ -29,6 +13,25 @@ Audacity has a built-in installer for Nyquist (`.ny`) files:
 4. Set "Allow overwriting" to **Check** (if updating)
 5. Click **Apply**
 6. Restart Audacity or enable the plugin via **Effect → Plugin Manager**
+
+
+## Manual Installation If Nyquist Plugin Installer doesn't work
+1. Copy it to your Audacity plug-ins folder.
+(may need admin rights to the folder, in linux open folder as admin or copy with commandline)
+   | OS | Path |
+   |----|------|
+   | **Windows** | `C:\Program Files\Audacity\Plug-Ins\` |
+   | **macOS** | `/Applications/Audacity.app/Contents/plug-ins/` |
+   | **Linux** | `/usr/share/audacity/plug-ins/` or `~/.audacity-data/Plug-Ins/` or `/home/tom/.local/share/audacity/Plug-Ins/` |
+2. Restart audacity
+3. Look under Effects
+
+## If it doesn't show up 
+4. Open Audacity → **Effect menu** → **Plugin Manager** (or **Add / Remove Plug-ins…**)
+5. Find **JukeboxCrush** in the list, set it to **Enabled**, click **OK**
+6. It will now appear under **Effect → JukeboxCrush** (or restart again)
+
+
 
 ----
 
