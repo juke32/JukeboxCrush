@@ -22,4 +22,4 @@ A Nyquist bitcrush plugin for Audacity featuring bit depth reduction, sample rat
 
 ----
 
-The install_copy.py and install_link.py scripts are mainly for me to easily install the plugin on my linux machine. It's not required or reccomended to use them
+The install_copy.py script is mainly for me to easily install the plugin on my linux machine. It's not required or reccomended to use it
